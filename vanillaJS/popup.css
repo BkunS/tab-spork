@@ -6,7 +6,7 @@ html, body {
 
 a {
 	margin-right: 10px;
-	color: lightblue;
+	color: DodgerBlue;
 	font-size: 13px;
 	text-decoration: underline;
 }
@@ -16,7 +16,7 @@ a:hover {
 }
 
 hr {
-	margin-top: 5px;
+	margin-top: 0;
 	margin-bottom: 5px;
 }
 
@@ -40,7 +40,8 @@ hr {
 }
 
 .containerTitle {
-	margin-top: 15px;
+	margin-top: 10px;
+	padding-left: 10px;
 	width: inherit;
 	line-height: 40px;
 	font-size: 20px;
@@ -144,6 +145,8 @@ hr {
 	margin: 0;
 	text-align: center;
 	line-height: 42px;
+	color: white;
+	text-decoration: none;
 	background-color: coral;
 }
 
@@ -173,7 +176,7 @@ hr {
 }
 
 .button {
-	background-color: #4CAF50;
+	background-color: YellowGreen;
 	border: none;
 	color: white;
 	padding: 15px 32px;
