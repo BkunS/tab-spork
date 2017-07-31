@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+	"name": "TabSpork",
+  "version": "0.1",
+
+  "description": "Store current tabs aside and resume them anytime later when needed.",
+
+  "browser_action": {
+    "default_icon": {
+			"16": "icon.png",
+			"24": "icon-fullsize.png",
+			"32": "icon-fullsize.png"
+		},
+    "default_popup": "popup.html#popup",
+	"default_title": "Set all tabs aside!"
+	},
+	
+  "permissions": [
+    "activeTab",
+		"tabs",
+		"storage",
+		"<all_urls>",
+    "https://ajax.googleapis.com/"
+  ]
+}

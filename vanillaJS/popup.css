@@ -1,0 +1,223 @@
+html, body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+	margin: 0;
+}
+
+a {
+	margin-right: 10px;
+	color: lightblue;
+	font-size: 13px;
+	text-decoration: underline;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#app {
+	/* avoid an excessively wide status text */
+	//white-space: pre;
+	text-overflow: ellipsis;
+	//overflow: hidden;
+	min-width: 250px;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 10px;
+}
+
+.popup {
+	width: 625px;
+	max-width: 625px;				
+	height: 480px;
+	max-height: 480px;
+}
+
+.containerTitle {
+	margin-top: 15px;
+	width: inherit;
+	line-height: 40px;
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-container {		
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	//width: auto;
+	height: auto;
+	//max-width: 605px;
+	margin: 0;
+	margin-bottom: 15px;
+
+	padding-left: 5%;
+	padding-right: 5%;	
+	width: 90%;
+	max-width: 90%;
+	background-color: white;
+}
+
+.flexDirection-col {
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 5%;
+	padding-right: 5%;	
+	width: 90%;
+	max-width: 90%;
+}
+
+.flex-item {				
+	background-color: lightgrey;
+	width: 160px;
+	height: 120px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0;
+	text-align: top;
+	border: 1px solid lightgrey;
+}
+
+.flex-list {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	max-width: 1000px;
+	height: 42px;
+	margin: 5px;
+	padding: 0;
+}
+
+.flex-list-tab {
+	width: 70%;
+}
+
+.list-item {
+	display: flex;
+	float: left;
+	width: calc(100% - 100px);
+	max-width: calc(100% - 100px);
+	border: 1px solid lightgrey;
+}
+
+.list-wrap {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	width: 100%;
+	background-color: lightgrey;
+}
+
+.list-title {
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.iconDiv {
+	padding: 5px;
+	background-color: transparent;
+	width: 30px;
+	height: 30px;
+}
+
+.list-url {
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	font-size: 10px;
+	font-weight: lighter;
+	color: grey;
+}
+
+.list-BT {
+	width: 100px;
+	margin: 0;
+	text-align: center;
+	line-height: 42px;
+	background-color: coral;
+}
+
+.item-title {
+	font-size: 13px;
+	height: 30px;
+	padding-left: 3px;
+	padding-right: 3px;
+	max-height: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.flex-item:hover, .list-item:hover, .list-BT:hover {
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {				
+	height: 30px;
+	font-size: 12px;
+	padding-left: 5px;
+}
+
+.previewImg {
+	height: 90px;
+}
+
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+.button:hover {
+	cursor: pointer;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.paddingLeft {
+	padding-left: 10px;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+.wsPre {
+	white-space: pre;
+}
+
+.center {
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.disable {
+
+}
