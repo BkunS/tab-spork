@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TabSpork",
-  "version": "0.1",
+  "version": "0.2",
 
   "description": "Store current tabs aside and resume them anytime later when needed.",
 
