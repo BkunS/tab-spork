@@ -2,6 +2,8 @@
 
 	let page = document.getElementById("page");	
 
+	/* DOM Element Generation */
+
 	//mode: {1: flex-box, 0: flex-list}
 	let genItem = (currTab, mode) => {
 		let {title, id, previewImg, containerId, favIconUrl, url} = currTab;
@@ -137,6 +139,8 @@
 		return session;
 	}
 
+	/* Store Tabs: */
+
 	let storeCurrTab = (tab, opt) => {		
 		if (tab === null) {
 			chrome.tabs.getSelected(null, (currTab) => {				
@@ -180,37 +184,38 @@
 
 		checkDuplicate(key, currTab, (cb) => {
 			let index = -1,
+					mode = 0,
 					arr = null;
 			if (cb !== null) {
 				index = cb.index;
 				arr = cb.arr;
+				mode = cb.mode;
 			}
 
 			if (index < 0) {
 				arr = arr === null ? [] : arr;
 				chrome.tabs.captureVisibleTab(currTab.windowId, {quality: 95}, (url) => {
 					resizeImg(url, (cb) => {
-						currTab.previewImg = cb;
+						if (mode === 0) {
+							currTab.previewImg = cb;
+						}
 						currTab.containerId = key;
-						let item = genItem(currTab);
+						let item = genItem(currTab, mode);
 						let container = document.getElementById(key + "-Container");
 
 						if (container === null) {
-							page.appendChild(genContainer(key));
+							page.appendChild(genContainer(key, mode));
 							container = document.getElementById(key + "-Container");
 						}
 						arr.push(currTab);
 						let val = {
-							mode: 0,
+							mode: mode,
 							tabs: arr
 						}
 						chrome.storage.local.set({[key]: val}, () => {
 							container.appendChild(item);													
-							if (opt === -1) {			
-								//chrome.storage.local.get(null, (obj) => {
-									//console.log(JSON.stringify(obj));
-									closeSelectedTab(currTab);
-								//});													
+							if (opt === -1) {
+								closeSelectedTab(currTab);			
 							} else if (opt === 0) {
 								chrome.tabs.update({
 	   							url: "./popup.html"
@@ -255,6 +260,9 @@
 			});
 		});
 	}
+
+
+	/* Open Tabs: */
 
 	let openSelectedTab = (currTab, opt) => {
 		let id = currTab.containerId;	
@@ -327,6 +335,8 @@
 		});
 	}
 
+	/* Close and Remove Tabs: */
+
 	let closeSelectedTab = (currTab) => {
 		chrome.tabs.remove(currTab.id);
 	}
@@ -348,14 +358,18 @@
 	}
 
 
-	// return {index, arr} || null
+	/* Helper functions: */
+
+	// return {index, arr, mode} || null
 	let checkDuplicate = (key, currTab, callback) => {
 		chrome.storage.local.get([key], (obj) => {			
 			let arr = [];
+			let mode = 0;
 			if (!isEmpty(obj)) {
 				arr = Object.keys(obj[key].tabs).map((e) => {
 					return obj[key]['tabs'][e];
 				});
+				mode = obj[key].mode;
 			} else {
 				return callback(null);				
 			}
@@ -369,7 +383,7 @@
 					}
 				});
 			}
-			return callback({'index': index, 'arr': arr});
+			return callback({'index': index, 'arr': arr, 'mode': mode});
 		});
 	}
 
@@ -413,6 +427,9 @@
 		});
 	}
 
+
+	/* Initialize Page: */
+
 	let initPage = () => {
 		if (window.location.hash === '#popup') {			
 			let html = document.getElementsByTagName('html')[0];
@@ -431,6 +448,7 @@
 		}
 
 		chrome.storage.local.get(null, (sessions) => {
+			//console.log(sessions);
 			for (session in sessions) {
 				let mode = sessions[session].mode;
 				let keys = sessions[session].tabs;
@@ -447,6 +465,9 @@
 
 		hideBTs();		
 	}
+
+
+	/* Self-Run functions onload: */
 
 	initPage();
 	document.getElementById('storeCurrTabBT').addEventListener('click', () => {
