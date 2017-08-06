@@ -20,7 +20,7 @@ module.exports = {
 			exclude: /node_modules/,
 			use: [
 			{
-				loader: 'react-hot-loader',
+				loader: 'babel-loader',
 				options: {
 					presets: ['react', 'es2015', 'env', 'stage-0'],
 					plugins: ['transform-class-properties', 'transform-runtime'],
