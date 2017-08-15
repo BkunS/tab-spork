@@ -396,8 +396,8 @@
 
 	let openPopupWindow = () => {
 		let popupWindow = window.open(
-			chrome.extension.getURL("popup.html"),
-			"popupWindow",
+			chrome.extension.getURL("tabSpork.html"),
+			"tabSpork",
 		);
 	}
 

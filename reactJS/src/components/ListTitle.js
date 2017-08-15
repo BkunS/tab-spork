@@ -9,10 +9,11 @@ export default class ListTitle extends React.Component {
 	}
 
 	render() {
-
+		let id = this.props.session.id;
+		let title = id.substring(0, id.indexOf("_"));
 		return(
 			<div>
-
+				{title}
 			</div>
 		);
 	}

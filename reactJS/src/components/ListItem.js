@@ -12,7 +12,7 @@ export default class ListItem extends React.Component {
 
 		return(
 			<div>
-
+				ListItem
 			</div>
 		);
 	}

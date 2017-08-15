@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -22,8 +23,9 @@ module.exports = {
 			{
 				loader: 'babel-loader',
 				options: {
+					babelrc: false,
 					presets: ['react', 'es2015', 'env', 'stage-0'],
-					plugins: ['transform-class-properties', 'transform-runtime'],
+					plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-runtime'],
 				},
 			},
 			],
@@ -43,7 +45,22 @@ module.exports = {
 		},
 		{
 			test: /\.(png|svg|jpg|gif)$/,
-			use: ['file-loader'],
+			use: [
+				{
+					loader: 'file-loader',
+					options: {
+            name: 'assets/[name].[ext]',
+          }
+				}
+			],
+		},
+		{
+			test: /\.json/,
+			use: [
+				{
+					loader: 'file-loader',
+				}
+			],
 		},
 		{
 			test: /\.(eot|ttf|woff|woff2)$/,
@@ -57,9 +74,14 @@ module.exports = {
 			filename: 'vendor.bundle.js',
 		}),
 		new HtmlWebpackPlugin({
-			template: './build/index.html',
+			template: './src/tabSpork.html',
+			filename: 'tabSpork.html',
 		}),
 		new ExtractTextPlugin('bundle.css'),
 		new WebpackCleanupPlugin(),
+		new CopyWebpackPlugin([
+			{ from: __dirname + '/src/manifest.json', to: __dirname + '/build'},
+			{ from: __dirname + '/src/assets', to: __dirname + '/build/assets'},
+		]),
 	],
 }
